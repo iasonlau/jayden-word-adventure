@@ -1,0 +1,25 @@
+{
+  "name": "字字探險隊｜能力大冒險",
+  "short_name": "字字探險隊",
+  "description": "香港繁體中文及廣東話小一至小二學習能力評估",
+  "lang": "zh-Hant-HK",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eaf3ff",
+  "theme_color": "#377bd1",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
