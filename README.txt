@@ -1,7 +1,7 @@
-字字探險隊 PWA v0.1
+字字探險隊 PWA v2
 
-部署：將本資料夾所有檔案上傳到同一個 HTTPS 網站目錄，index.html 為首頁。
-可使用 GitHub Pages、Netlify Drop 等靜態網站託管。
-iPhone：Safari 開啟 HTTPS 網址 > 分享 > 加入主畫面。
-注意：未部署前不能直接透過本機檔案完整安裝 PWA；廣東話朗讀需裝置支援 zh-HK 語音。
-評估結果保存在當前裝置瀏覽器本機，不會自動跨裝置同步。
+部署：將根目錄所有檔案上傳到同一個 HTTPS 網站，index.html 為首頁；GitHub Pages 可由 main 分支根目錄發布。
+iPhone／iPad：用 Safari 開啟網址 > 分享 > 加入主畫面。說話屋第一次使用時需允許咪高峰權限。
+50 題評估沿用 zizi_assessment_v1，認字進度沿用 zizi_learning_v1；更新不會清除現有瀏覽器紀錄。
+所有進度只保存在目前裝置，家長可在「家長中心」備份。
+Web Speech API 只協助辨認可能講了甚麼，不會可靠評估粵語聲調或發音準確度；最終由家長確認評分。

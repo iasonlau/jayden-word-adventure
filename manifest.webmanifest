@@ -1,25 +1,32 @@
 {
-  "name": "字字探險隊｜能力大冒險",
+  "id": "./",
+  "name": "字字探險隊｜廣東話認字大冒險",
   "short_name": "字字探險隊",
-  "description": "香港繁體中文及廣東話小一至小二學習能力評估",
+  "description": "香港繁體中文及廣東話兒童認字、聆聽、說話與每日練習遊戲",
   "lang": "zh-Hant-HK",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#eaf3ff",
-  "theme_color": "#377bd1",
+  "orientation": "any",
+  "background_color": "#e9f5ff",
+  "theme_color": "#5b49d8",
+  "categories": ["education", "kids"],
+  "shortcuts": [
+    {"name": "每日任務", "short_name": "每日", "url": "./?go=daily", "icons": [{"src": "./icon-192.png", "sizes": "192x192"}]},
+    {"name": "能力評估", "short_name": "評估", "url": "./?go=assessment", "icons": [{"src": "./icon-192.png", "sizes": "192x192"}]}
+  ],
   "icons": [
     {
       "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
