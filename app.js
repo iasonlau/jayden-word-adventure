@@ -21,7 +21,7 @@ const raw=[
 
 const vocab=['老師','教室','課室','學校','同學','書包','鉛筆','橡皮','尺子','功課','回答','問題','正確','錯誤','選擇','圈出','填寫','連線','比較','分別','相同','不同','除了','首先','然後','最後','按照','次序','排列','原因','因為','所以','前面','後面','上面','下面','旁邊','中間','左邊','右邊','今天','昨天','明天','早上','晚上','星期','時間','開始','完成','準備','整理','安靜','留心','聆聽','閱讀','書寫','句子','詞語','短文','故事','人物','地點','事情','開心','難過','擔心','勇敢','幫忙','分享','一起','朋友','家庭','爸爸','媽媽','哥哥','妹妹','早餐','午餐','晚餐','水果','蘋果','香蕉','橙子','動物','小鳥','小狗','小貓','天氣','下雨','太陽','月亮','公園','巴士','地鐵','走路','跑步','游泳','洗手','刷牙','睡覺','起床','穿衣','吃飯','喝水','打開','關上','拿起','放下','長短','大小','多少','高低','快慢','輕重','顏色','紅色','藍色','綠色','黃色','黑色','白色','圓形','方形','三角形','數字','一個','兩個','三個','全部','部分','每個','一半','增加','減少','需要','可以','應該','必須','如果','但是','雖然','仍然','只有','已經','正在','看見','知道','明白','記得','忘記','發現','尋找','觀察','描述','解釋','回答問題','根據','適當','以下','以上','其中','其他','一項','兩項','答案','題目','內容','圖片','聲音','讀音','筆畫','筆順','部首','組合','造句','標點','逗號','句號','問號','感嘆號','文章','段落','主角','結局','順序','方法','結果','特別','簡單','困難','清楚','認真','仔細','努力','進步','練習','複習','學習','理解'];
 const units=[
- {name:'校園森林',icon:'🏫',start:0,end:18,color:'purple'},
+ {name:'森林認字島',icon:'🌲',start:0,end:18,color:'green'},
  {name:'指令山谷',icon:'🧭',start:18,end:32,color:'orange'},
  {name:'時空小鎮',icon:'🕰️',start:32,end:48,color:'green'},
  {name:'故事海灣',icon:'📖',start:48,end:64,color:'purple'},
@@ -65,7 +65,7 @@ function renderHome(){
  <section class="hero">
   <div><span class="hero-badge">今日探險任務</span><h1>你好，文字探險家！</h1><p>同阿字一齊穿過森林、解開詞語謎題，逐步儲齊中文超能力。</p>
   <div class="actions"><button class="btn mint" id="heroDaily">${dailyDone?'再玩每日任務':'出發做每日任務'}</button><button class="btn ghost" id="heroMap">打開冒險地圖</button></div></div>
-  <div class="mascot" aria-label="探險狐狸阿字">🦊</div>
+  <div class="hero-character" aria-label="探險狐狸阿字正在揮手"><span class="hero-spark">✨</span><span class="fox-emoji">🦊</span><span class="character-callout">一齊出發！</span></div>
  </section>
  <div class="section-head"><h2>今日任務</h2><span class="muted tiny">${dailyDone?'已完成，叻叻！':'約 5 分鐘'}</span></div>
  <div class="quest-strip"><div class="qicon">${dailyDone?'🏅':'🎯'}</div><div><b>${dailyDone?'今日寶箱已打開':'完成 5 個認字挑戰'}</b><div class="muted tiny">${dailyDone?'明日再有新任務，亦可以繼續練習。':'完成可獲星星，錯題會自動加入複習。'}</div></div><button class="btn ${dailyDone?'secondary':'mint'}" id="dailyBtn">${dailyDone?'再玩':'開始'}</button></div>
@@ -88,8 +88,8 @@ function renderSpeechLab(){
 }
 
 function renderMap(){
- updateChrome('冒險地圖');root.innerHTML=`<section class="card"><div class="question-top"><div><span class="route-label">🗺️ 認字世界</span><h1 style="margin:12px 0 4px">揀一站出發啦！</h1><p class="muted">每站都有聽聲、找字同配對活動。</p></div><div class="mascot" style="min-height:auto;font-size:72px">🦊</div></div><div class="map">${units.map((u,i)=>`<div class="map-node"><div class="node-copy"><b>${u.icon} ${u.name}</b><small>${u.end-u.start} 個詞語</small></div><button class="node-button" data-unit="${i}" aria-label="開始${u.name}">${i+1}</button></div>`).join('')}</div></section>`;
- root.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>startPractice(Number(b.dataset.unit),5,false));
+ updateChrome('冒險地圖');root.innerHTML=`<section class="card adventure-card"><div class="question-top"><div><span class="route-label">🗺️ 動畫冒險地圖</span><h1 style="margin:12px 0 4px">阿字等你帶路！</h1><p class="muted">由森林認字島出發，每站都有廣東話聽聲、找字同星星獎勵。</p></div><div class="map-compass" aria-hidden="true">🧭</div></div><div class="adventure-world" id="adventureWorld"><div class="map-sun" aria-hidden="true">☀️</div><div class="map-cloud cloud-one" aria-hidden="true">☁️</div><div class="map-cloud cloud-two" aria-hidden="true">☁️</div><div class="mountains" aria-hidden="true">⛰️</div><div class="forest-line" aria-hidden="true">🌲🌳🌲🌴🌳🌲🌳</div><div class="trail" aria-hidden="true"></div><div class="map-fox" id="mapFox" aria-label="阿字準備出發"><span>🦊</span><small>出發！</small></div><div class="map">${units.map((u,i)=>`<div class="map-node"><div class="node-copy"><b>${u.icon} ${u.name}</b><small>${u.end-u.start} 個詞語</small></div><button class="node-button" data-unit="${i}" aria-label="開始${u.name}">${i+1}<span class="node-stars" aria-hidden="true">${i===0?'★':'☆'}</span></button></div>`).join('')}</div></div><p class="tip map-tip">🌟 先試「森林認字島」：阿字會沿住小路跳去你揀嘅關卡。</p></section>`;
+ root.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>{const unitIndex=Number(b.dataset.unit),fox=document.getElementById('mapFox'),world=document.getElementById('adventureWorld');root.querySelectorAll('[data-unit]').forEach(x=>x.disabled=true);b.classList.add('chosen');world.style.setProperty('--fox-stop',`${Math.min(86,10+unitIndex*12)}%`);fox.classList.add('running');fox.querySelector('small').textContent=`去${units[unitIndex].name}！`;setTimeout(()=>startPractice(unitIndex,5,false),850)});
 }
 
 function dailyWords(){
@@ -112,13 +112,13 @@ function renderPractice(){
  const word=practice.words[practice.index],all=[...vocab,...learning.custom],alts=[];
  for(let n=1;alts.length<3;n++){const w=all[(all.indexOf(word)+n*17+practice.index*7)%all.length];if(w!==word&&!alts.includes(w))alts.push(w)}
  const choices=[word,...alts].sort((a,b)=>((a.charCodeAt(0)+practice.index*11)%9)-((b.charCodeAt(0)+practice.index*11)%9));
- root.innerHTML=`<section class="card question-card"><div class="question-top"><span class="route-label">${practice.isDaily?'🎯 每日任務':units[practice.unitIndex].icon+' '+units[practice.unitIndex].name}</span><b>${practice.index+1} / ${practice.total}</b></div><div class="progress"><span style="width:${practice.index/practice.total*100}%"></span></div><div class="prompt">聽清楚，揀出正確詞語</div><button class="btn secondary speaker" id="hearWord">🔊 播放廣東話</button><div class="answer-grid">${choices.map(c=>`<button class="choice" data-answer="${esc(c)}">${esc(c)}</button>`).join('')}</div><div class="actions"><button class="btn ghost" id="leavePractice">返回地圖</button></div></section>`;
+ root.innerHTML=`<section class="card question-card forest-level"><div class="forest-canopy" aria-hidden="true"><span>🌿</span><span>🦋</span><span>🌿</span></div><div class="question-top"><span class="route-label">${practice.isDaily?'🎯 每日任務':units[practice.unitIndex].icon+' '+units[practice.unitIndex].name}</span><b>${practice.index+1} / ${practice.total}</b></div><div class="progress"><span style="width:${practice.index/practice.total*100}%"></span></div><div class="forest-guide"><span class="guide-fox" id="guideFox" aria-hidden="true">🦊</span><div><b>阿字發現咗一塊詞語牌！</b><small>聽清楚讀音，再幫佢揀啱。</small></div></div><div class="prompt">聽清楚，揀出正確詞語</div><button class="btn secondary speaker" id="hearWord">🔊 播放廣東話</button><div class="answer-grid">${choices.map(c=>`<button class="choice" data-answer="${esc(c)}">${esc(c)}</button>`).join('')}</div><div class="actions"><button class="btn ghost" id="leavePractice">返回地圖</button></div></section>`;
  document.getElementById('hearWord').onclick=()=>speak(word);document.getElementById('leavePractice').onclick=()=>go(practice.isDaily?'daily':'map');setTimeout(()=>speak(word),260);
- root.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{const right=b.dataset.answer===word;root.querySelectorAll('[data-answer]').forEach(x=>{x.disabled=true;x.classList.toggle('correct',x.dataset.answer===word);x.classList.toggle('wrong',x===b&&!right)});if(right){practice.right++;learning.stars++;learning.known[word]=(learning.known[word]||0)+1}else learning.mistakes[word]=(learning.mistakes[word]||0)+1;saveLearning();feedback(right?'搵到啦！':'記住呢個詞語',right);setTimeout(()=>{practice.index++;renderPractice();scrollTop()},1050)});
+ root.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{const right=b.dataset.answer===word,fox=document.getElementById('guideFox');root.querySelectorAll('[data-answer]').forEach(x=>{x.disabled=true;x.classList.toggle('correct',x.dataset.answer===word);x.classList.toggle('wrong',x===b&&!right)});fox.classList.add(right?'fox-cheer':'fox-think');if(right){practice.right++;learning.stars++;learning.known[word]=(learning.known[word]||0)+1}else learning.mistakes[word]=(learning.mistakes[word]||0)+1;saveLearning();feedback(right?'阿字跳起咗：搵到啦！':'阿字記低咗，下次再試',right);setTimeout(()=>{practice.index++;renderPractice();scrollTop()},1050)});
 }
 function finishPractice(){
  if(practice.isDaily&&!learning.dailyDates.includes(today()))learning.dailyDates=[...learning.dailyDates,today()].slice(-60);
- saveLearning();updateChrome('任務完成');confetti();root.innerHTML=`<section class="card question-card" style="text-align:center"><div class="mascot">🏆</div><h1>任務完成！</h1><p class="prompt">答啱 ${practice.right} / ${practice.total} 題</p><p class="muted">每次記住一點點，就會變成好強嘅中文超能力。</p><div class="actions" style="justify-content:center"><button class="btn mint" id="again">再玩一次</button><button class="btn secondary" id="finishHome">返回基地</button></div></section>`;document.getElementById('again').onclick=()=>startPractice(practice.unitIndex,practice.total,practice.isDaily);document.getElementById('finishHome').onclick=()=>go('home');
+ saveLearning();updateChrome('任務完成');confetti();root.innerHTML=`<section class="card question-card finish-scene" style="text-align:center"><div class="finish-fox" aria-label="阿字開心跳舞">🦊</div><div class="finish-stars" aria-hidden="true">✨ ⭐ ✨</div><h1>任務完成！</h1><p class="prompt">答啱 ${practice.right} / ${practice.total} 題</p><p class="muted">阿字同你一齊解鎖咗新嘅中文超能力！</p><div class="actions" style="justify-content:center"><button class="btn mint" id="again">再玩一次</button><button class="btn secondary" id="finishMap">返回冒險地圖</button><button class="btn ghost" id="finishHome">返回基地</button></div></section>`;document.getElementById('again').onclick=()=>startPractice(practice.unitIndex,practice.total,practice.isDaily);document.getElementById('finishMap').onclick=()=>go('map');document.getElementById('finishHome').onclick=()=>go('home');
 }
 
 function startAssessment(forcedIndex){
@@ -235,7 +235,7 @@ function renderParent(){
 function importBackup(e){const file=e.target.files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!data.assessment||!data.learning)throw new Error();state={...state,...data.assessment};learning={...learning,...data.learning};saveState();saveLearning();toast('進度已還原');renderParent()}catch{toast('呢個備份檔案格式唔正確')}};reader.readAsText(file)}
 
 window.addEventListener('beforeinstallprompt',e=>e.preventDefault());
-if('serviceWorker'in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').then(reg=>reg.update()).catch(()=>{}));
 window.speechSynthesis?.addEventListener?.('voiceschanged',()=>{});
 const requested=new URLSearchParams(location.search).get('go');
 if(requested==='daily')go('daily');else if(requested==='assessment')startAssessment();else go('home');
