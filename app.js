@@ -34,7 +34,7 @@ let state=load(ASSESS_KEY,{index:0,answers:[],started:false,finished:false});
 if(!Array.isArray(state.answers))state.answers=[];
 let learning=load(LEARN_KEY,{stars:0,known:{},mistakes:{},sessions:0,custom:[],dailyDates:[]});
 learning.known=learning.known||{};learning.mistakes=learning.mistakes||{};learning.custom=learning.custom||[];learning.dailyDates=learning.dailyDates||[];
-let route='home',chosen=null,practice=null,recognition=null,recognizedText='',speechRuleIndexOverride=null;
+let route='home',chosen=null,practice=null,recognition=null,recognizedText='',speechRuleIndexOverride=null,handwritingIndex=0;
 const saveState=()=>persist(ASSESS_KEY,state),saveLearning=()=>persist(LEARN_KEY,learning);
 
 function updateChrome(label=route){
@@ -86,6 +86,13 @@ function renderSpeechLab(){
  const supported=Boolean(window.SpeechRecognition||window.webkitSpeechRecognition);
  root.innerHTML=`<section class="card question-card"><div class="question-top"><span class="route-label">🎙️ 說話屋試咪</span><div class="mascot" style="font-size:70px;min-height:auto">🦊</div></div><h1>先試講「蘋果」</h1><p class="muted">呢個試咪唔會改動 50 題評估進度，亦唔會儲存錄音。</p><div class="picture">🍎</div><div class="mic-panel"><b>望住圖片，自己講出名稱</b><p class="muted tiny">第一次使用會詢問咪高峰權限。</p><button class="mic-button" id="micButton" aria-label="開始錄音">${supported?'🎙️':'👨‍👩‍👦'}</button><div class="transcript" id="transcript">${supported?'撳咪高峰開始':'此瀏覽器未提供語音辨認'}</div><p id="speechHint" class="muted tiny">只核對可能講咗乜，唔評估聲調或咬字。</p><button class="btn secondary hidden" id="retrySpeech">🔁 再講一次</button></div><p class="info" style="margin-top:18px">正式 50 題評估入面，每條說話題都有「再講一次」及家長 2／1／0 分後備評分；語音辨認結果只作提示。</p><div class="actions"><button class="btn" id="fullAssess">開始／繼續完整評估</button><button class="btn secondary" id="speechHome">返回基地</button></div></section>`;
  setupSpeaking();document.getElementById('fullAssess').onclick=()=>{speechRuleIndexOverride=null;startAssessment()};document.getElementById('speechHome').onclick=()=>{speechRuleIndexOverride=null;go('home')};
+}
+
+function renderHandwritingLab(){
+ window.ZiziGame?.unmount?.();route='practice';updateChrome('手寫工房');
+ const targets=['人','山','水','明','學'],target=targets[handwritingIndex%targets.length];
+ root.innerHTML=`<section class="card question-card"><div class="question-top"><span class="route-label">✍️ 手寫工房</span><b>自由練習</b></div><h1>用手指寫「${target}」字</h1><p class="muted">呢個練習唔會改動 50 題能力評估嘅題號或答案。</p><button class="btn secondary speaker" id="playPrompt">🔊 廣東話讀題</button><canvas class="writing-pad" id="pad" width="760" height="300" aria-label="手寫區"></canvas><div class="actions"><button class="btn secondary" id="clearPad">清除筆跡</button><button class="btn ghost" id="showTarget">家長查看目標字</button><button class="btn" id="anotherWord">換另一個字</button></div><p class="info hidden" id="target">目標：<b>${target}</b></p><div class="actions"><button class="btn secondary" id="writingAssess">前往完整 50 題評估</button><button class="btn ghost" id="writingHome">返回森林</button></div></section>`;
+ setupCanvas();document.getElementById('playPrompt').onclick=()=>speak(`請寫${target}字。`);document.getElementById('anotherWord').onclick=()=>{handwritingIndex++;renderHandwritingLab()};document.getElementById('writingAssess').onclick=()=>startAssessment();document.getElementById('writingHome').onclick=()=>go('home');
 }
 
 function renderMap(){

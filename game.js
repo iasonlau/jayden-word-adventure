@@ -54,7 +54,7 @@ function say(text){const d=q('#gameDialogue');if(!d)return;d.textContent=text;d.
 function burst(symbol){const p=q('.game-particles');if(!p)return;p.innerHTML=Array.from({length:12},(_,i)=>`<i style="left:${42+(i%4)*5}%;--x:${(i-6)*35}px;--y:${-80-Math.abs(i-6)*13}px;animation-delay:${i*.025}s">${symbol}</i>`).join('');setTimeout(()=>{if(p)p.innerHTML=''},1500)}
 function complete(){learning.stars=(learning.stars||0)+3;learning.sessions=(learning.sessions||0)+1;learning.forestRuns=(learning.forestRuns||0)+1;saveLearning();starEl.textContent=learning.stars;burst('✨');setTimeout(()=>q('#gameComplete')?.classList.remove('hidden-game'),650)}
 function openMenu(){q('#gameMenu').classList.remove('hidden-game');q('#closeMenu').focus()}function closeMenu(){q('#gameMenu').classList.add('hidden-game');q('#menuBtn').focus()}
-function openTool(tool){closeMenu();({assess:()=>startAssessment(),speech:()=>renderSpeechLab(),write:()=>startAssessment(42),words:()=>go('map'),daily:()=>go('daily'),parent:()=>go('parent')}[tool]||(()=>{}))()}
+function openTool(tool){closeMenu();({assess:()=>startAssessment(),speech:()=>renderSpeechLab(),write:()=>renderHandwritingLab(),words:()=>go('map'),daily:()=>go('daily'),parent:()=>go('parent')}[tool]||(()=>{}))()}
 window.ZiziGame={mount,unmount};
 }catch(error){window.ZiziGameError=String(error);console.error('Forest game failed to initialise',error)}
 })();
