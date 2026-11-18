@@ -1,4 +1,4 @@
-const CACHE='zizi-v7-spirit-realm';
+const CACHE='zizi-v8-learning-house';
 const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp','./assets/game/spirit-realm-map.webp','./assets/game/spirit-realm-sprites.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([
