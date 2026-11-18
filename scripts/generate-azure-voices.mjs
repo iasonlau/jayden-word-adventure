@@ -20,7 +20,7 @@ const game=await readFile(join(root,'game.js'),'utf8');
 const rawBlock=app.match(/const raw=\[([\s\S]*?)\n\];/)?.[1]||'';
 const assessmentPrompts=rawBlock.split('\n').map(line=>line.match(/,\d+,'([^']+)',\d+\],?$/)?.[1]).filter(Boolean);
 const vocabBlock=app.match(/const vocab=\[([\s\S]*?)\];/)?.[1]||'';
-const gameSay=[...game.matchAll(/(?:say|hint|s):'([^']+)'/g)].map(m=>m[1]);
+const gameSay=[...game.matchAll(/(?:say|spoken|hint|intro|s):'([^']+)'/g)].map(m=>m[1]);
 
 const narrator=unique([
  ...assessmentPrompts,...quoted(vocabBlock),...gameSay,
@@ -31,7 +31,7 @@ const narrator=unique([
 ]);
 const character=unique([
  '字光指住下一個發光草叢。','字光指住左上方符文台。','字光指住右上方神殿。','字光指住北面古門。',
- ...['芽團','小澄','燈豆'].flatMap(name=>[`${name}出現咗。完成三個詞語，同佢做朋友。`,`${name}跟住阿字出發！`])
+ ...['芽團','小澄','燈豆','桃桃','羽墨','岩仔','月糰','風鈴','星芽'].flatMap(name=>[`${name}出現咗。完成三個詞語，同佢做朋友。`,`${name}跟住阿字出發！`])
 ]);
 const lines={narrator,character};
 

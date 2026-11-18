@@ -1,4 +1,4 @@
-const CACHE='zizi-v10-fresh-game-and-ios-audio';
+const CACHE='zizi-v11-three-chapters-learning-rpg';
 const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./voice.js','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/audio/manifest.json','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp','./assets/game/spirit-realm-map.webp','./assets/game/spirit-realm-sprites.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([
