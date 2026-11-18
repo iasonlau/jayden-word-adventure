@@ -1,4 +1,4 @@
-const CACHE='zizi-v4-forest';
+const CACHE='zizi-v5-ios-touch';
 const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([
