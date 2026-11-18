@@ -1,5 +1,5 @@
-const CACHE='zizi-v6-dpad';
-const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp'];
+const CACHE='zizi-v7-spirit-realm';
+const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp','./assets/game/spirit-realm-map.webp','./assets/game/spirit-realm-sprites.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([
   caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))),
