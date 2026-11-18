@@ -1,5 +1,5 @@
-const CACHE='zizi-v2-20261117-animated-adventure';
-const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+const CACHE='zizi-v4-forest';
+const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([
   caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))),

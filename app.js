@@ -41,7 +41,7 @@ function updateChrome(label=route){
  statusEl.textContent=label==='home'?'探險基地':label;
  starEl.textContent=learning.stars||0;
  dock.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.route===route));
- dock.classList.toggle('hidden',route==='assessment'||route==='practice');
+ dock.classList.toggle('hidden',route==='assessment'||route==='practice'||route==='home');
 }
 function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2600)}
 function confetti(){const box=document.getElementById('celebration');box.innerHTML=Array.from({length:30},(_,i)=>`<i style="left:${(i*37)%100}%;animation-delay:${(i%8)*.06}s">${['⭐','✨','🎉','🟣','🟡','🟢'][i%6]}</i>`).join('');setTimeout(()=>box.innerHTML='',2100)}
@@ -55,11 +55,12 @@ function speak(text){
  speechSynthesis.speak(u);if(!u.voice)toast('裝置未有廣東話語音，讀音可能唔準確。');
 }
 
-function go(next){if(recognition){try{recognition.abort()}catch{}recognition=null}route=next;updateChrome();({home:renderHome,map:renderMap,daily:renderDaily,parent:renderParent}[next]||renderHome)();scrollTop()}
+function go(next){if(recognition){try{recognition.abort()}catch{}recognition=null}if(next!=='home')window.ZiziGame?.unmount?.();route=next;updateChrome();({home:renderHome,map:renderMap,daily:renderDaily,parent:renderParent}[next]||renderHome)();scrollTop()}
 document.getElementById('brandHome').onclick=()=>go('home');
 dock.querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.route));
 
 function renderHome(){
+ if(window.ZiziGame)return window.ZiziGame.mount();
  updateChrome('home');const remaining=Math.max(0,50-state.answers.length),dailyDone=learning.dailyDates.includes(today());
  root.innerHTML=`
  <section class="hero">
