@@ -49,6 +49,7 @@ function feedback(text,good=true){const el=document.createElement('div');el.clas
 function scrollTop(){window.scrollTo({top:0,behavior:'smooth'})}
 function today(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date())}
 function speak(text){
+ if(window.ZiziVoice){window.ZiziVoice.speak(text,{role:'narrator'});return}
  if(!('speechSynthesis'in window)){toast('呢個瀏覽器未能讀題，請家長幫忙讀出。');return}
  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='zh-HK';u.rate=.82;u.pitch=1.05;
  const voices=speechSynthesis.getVoices();u.voice=voices.find(v=>v.lang.toLowerCase()==='zh-hk')||voices.find(v=>/cantonese|hong kong|粵語/i.test(v.name))||null;

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "generatedAt": null,
+  "voices": {
+    "narrator": "zh-HK-HiuMaanNeural",
+    "character": "zh-HK-WanLungNeural"
+  },
+  "lines": {
+    "narrator": {},
+    "character": {}
+  }
+}
