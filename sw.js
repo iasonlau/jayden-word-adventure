@@ -1,4 +1,4 @@
-const CACHE='zizi-v17-living-world';
+const CACHE='zizi-v18-varied-encounters';
 const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./progression.css','./camp.css','./voice.js','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/audio/manifest.json','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp','./assets/game/spirit-realm-map.webp','./assets/game/spirit-realm-sprites.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([
