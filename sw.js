@@ -1,5 +1,5 @@
-const CACHE='zizi-v16-learning-progression';
-const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./progression.css','./voice.js','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/audio/manifest.json','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp','./assets/game/spirit-realm-map.webp','./assets/game/spirit-realm-sprites.webp'];
+const CACHE='zizi-v17-living-world';
+const ASSETS=['./','./index.html','./assessment.html','./app.css','./adventure.css','./game.css','./progression.css','./camp.css','./voice.js','./game.js','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/audio/manifest.json','./assets/game/forest-panorama.webp','./assets/game/fox-sprites.webp','./assets/game/spirit-realm-map.webp','./assets/game/spirit-realm-sprites.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([
   caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))),
