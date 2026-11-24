@@ -21,10 +21,12 @@ const rawBlock=app.match(/const raw=\[([\s\S]*?)\n\];/)?.[1]||'';
 const assessmentPrompts=rawBlock.split('\n').map(line=>line.match(/,\d+,'([^']+)',\d+\],?$/)?.[1]).filter(Boolean);
 const vocabBlock=app.match(/const vocab=\[([\s\S]*?)\];/)?.[1]||'';
 const gradeBlock=app.match(/const gradeCurriculum=\{([\s\S]*?)\n\};/)?.[1]||'';
+const dailyBlock=app.match(/const dailyBanks=\{([\s\S]*?)\n\};/)?.[1]||'';
+const dailySay=[...dailyBlock.matchAll(/(?:say|hint):'([^']+)'/g)].map(m=>m[1]);
 const gameSay=[...game.matchAll(/(?:say|spoken|hint|intro|s):'([^']+)'/g)].map(m=>m[1]);
 
 const narrator=unique([
- ...assessmentPrompts,...quoted(vocabBlock),...quoted(gradeBlock),...gameSay,
+ ...assessmentPrompts,...quoted(vocabBlock),...quoted(gradeBlock),...dailySay,...gameSay,
  '左邊月亮，中間星星，右邊太陽。','先木，然後水，最後火。',
  '差少少！留意左邊、中間、右邊嘅位置，再試一次。','差少少！留意先、然後、最後嘅次序，再試一次。',
  '森林','樹木','花朵','溪水','明亮','伙伴','首先','然後','最後','旁邊','中間',

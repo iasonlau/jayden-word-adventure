@@ -28,15 +28,73 @@ const gradeCurriculum={
  p2:{label:'小二',icon:'🌿',words:['教室','功課','回答','問題','正確','錯誤','選擇','圈出','填寫','連線','開始','完成','準備','整理','安靜','留心','聆聽','閱讀','書寫','句子','詞語','故事','人物','地點','事情','難過','擔心','勇敢','幫忙','分享','一起','家庭','早餐','午餐','晚餐','水果','動物','天氣','下雨','太陽','月亮','公園','巴士','地鐵','走路','跑步','游泳','打開','關上','拿起','放下','長短','大小','多少','高低','快慢','輕重','圓形','方形','三角形'],sentences:['今天下雨，我帶雨傘。','妹妹正在公園跑步。','我們一起整理課室。']},
  p3:{label:'小三',icon:'🌳',words:['比較','分別','相同','不同','除了','首先','然後','最後','按照','次序','排列','原因','因為','所以','前面','後面','旁邊','增加','減少','需要','應該','必須','如果','但是','雖然','仍然','正在','發現','尋找','觀察','描述','解釋','根據','適當','以下','以上','其中','其他','答案','題目','內容','短文','文章','段落','主角','結局','順序','方法','結果','特別','簡單','困難','清楚','認真','仔細','努力','進步','練習','複習','學習','理解'],sentences:['首先洗手，然後吃飯。','因為今天下雨，所以我們留在課室。','雖然題目困難，但是我會仔細思考。']}
 };
+const dailyBanks={
+ p1:{
+  zh:[
+   {prompt:'請揀出「山」字。',choices:['水','山','火'],answer:'山',say:'請揀出山字。',hint:'山字好似一座山。'},
+   {prompt:'小鳥在樹上唱歌。小鳥在哪裏？',choices:['樹上','水中','課室'],answer:'樹上',say:'小鳥喺樹上唱歌。小鳥喺邊度？',hint:'留意句子入面嘅地點。'},
+   {prompt:'邊個詞語表示心情很好？',choices:['開心','刷牙','尺子'],answer:'開心',say:'邊個詞語表示心情好好？',hint:'笑瞇瞇嗰種心情。'},
+   {prompt:'「上面」的相反詞是甚麼？',choices:['下面','中間','右邊'],answer:'下面',say:'上面嘅相反詞係乜嘢？',hint:'諗吓高同低。'},
+   {prompt:'哪一樣是上學用品？',choices:['書包','香蕉','小狗'],answer:'書包',say:'邊一樣係返學用品？',hint:'返學會揹住佢。'},
+   {prompt:'先起床，再刷牙。哪件事先做？',choices:['起床','刷牙','睡覺'],answer:'起床',say:'先起床，再刷牙。邊件事先做？',hint:'「先」後面就係答案。'}
+  ],
+  en:[
+   {prompt:'邊一個係「蘋果」嘅英文？',choices:['apple','book','cat'],answer:'apple',say:'邊一個係蘋果嘅英文？',english:'apple',hint:'紅色水果，開頭係 A。'},
+   {prompt:'揀出「狗」。',choices:['dog','sun','pen'],answer:'dog',say:'請揀出狗嘅英文。',english:'dog',hint:'開頭係 D。'},
+   {prompt:'Which one is a colour?',choices:['red','run','bag'],answer:'red',say:'邊一個係顏色？',english:'Which one is a colour?',hint:'蘋果可以係呢種顏色。'},
+   {prompt:'「書」的英文是甚麼？',choices:['book','bird','ball'],answer:'book',say:'書嘅英文係乜嘢？',english:'book',hint:'開頭係 B。'},
+   {prompt:'Which word means「太陽」?',choices:['sun','moon','fish'],answer:'sun',say:'邊個英文詞語解太陽？',english:'sun',hint:'白天會見到。'},
+   {prompt:'I ___ Jayden.',choices:['am','is','are'],answer:'am',say:'請完成句子，I blank Jayden。',english:'I am Jayden.',hint:'I 後面用 am。'}
+  ]
+ },
+ p2:{
+  zh:[
+   {prompt:'今天下雨，我帶雨傘。「我」帶了甚麼？',choices:['雨傘','帽子','書包'],answer:'雨傘',say:'今日落雨，我帶雨傘。我帶咗乜嘢？',hint:'答案喺句子後半。'},
+   {prompt:'哪個詞語表示「事前安排好」？',choices:['準備','忘記','離開'],answer:'準備',say:'邊個詞語表示事前安排好？',hint:'返學前會做呢件事。'},
+   {prompt:'「開始」的相反詞是甚麼？',choices:['完成','整理','選擇'],answer:'完成',say:'開始嘅相反詞係乜嘢？',hint:'一件事做完咗。'},
+   {prompt:'我們一起整理課室。誰整理課室？',choices:['我們','老師','妹妹'],answer:'我們',say:'我哋一齊整理課室。邊個整理課室？',hint:'留意句子第一個詞語。'},
+   {prompt:'哪一項不是交通工具？',choices:['地鐵','巴士','早餐'],answer:'早餐',say:'邊一樣唔係交通工具？',hint:'其中一樣係食物。'},
+   {prompt:'由短至長排列：尺子、鉛筆、繩子。要比較甚麼？',choices:['長短','顏色','輕重'],answer:'長短',say:'由短至長排列，要比較乜嘢？',hint:'題目已經講咗短同長。'}
+  ],
+  en:[
+   {prompt:'Which one means「學校」?',choices:['school','family','garden'],answer:'school',say:'邊個英文詞語解學校？',english:'school',hint:'開頭係 S。'},
+   {prompt:'She ___ reading.',choices:['is','are','am'],answer:'is',say:'請完成句子，She blank reading。',english:'She is reading.',hint:'She 後面用 is。'},
+   {prompt:'What is the opposite of big?',choices:['small','long','fast'],answer:'small',say:'Big 嘅相反詞係乜嘢？',english:'What is the opposite of big?',hint:'即係「小」。'},
+   {prompt:'Which animal can fly?',choices:['bird','dog','turtle'],answer:'bird',say:'邊種動物識飛？',english:'Which animal can fly?',hint:'有翼嘅動物。'},
+   {prompt:'「跑步」的英文是甚麼？',choices:['run','read','write'],answer:'run',say:'跑步嘅英文係乜嘢？',english:'run',hint:'開頭係 R。'},
+   {prompt:'There ___ two books.',choices:['are','is','am'],answer:'are',say:'請完成句子，There blank two books。',english:'There are two books.',hint:'兩本係眾數，用 are。'}
+  ]
+ },
+ p3:{
+  zh:[
+   {prompt:'因為今天下雨，所以我們留在課室。為甚麼留在課室？',choices:['因為下雨','因為肚餓','因為放學'],answer:'因為下雨',say:'點解我哋留喺課室？',hint:'「因為」後面交代原因。'},
+   {prompt:'「比較」是甚麼意思？',choices:['找出異同','抄寫十次','隨便選擇'],answer:'找出異同',say:'比較係乜嘢意思？',hint:'將兩樣事物放埋一齊睇。'},
+   {prompt:'首先洗手，然後吃飯。哪件事後做？',choices:['吃飯','洗手','起床'],answer:'吃飯',say:'首先洗手，然後食飯。邊件事後做？',hint:'「然後」帶出後做嘅事。'},
+   {prompt:'「雖然題目困難，但是我會努力。」哪個詞語表示轉折？',choices:['但是','題目','努力'],answer:'但是',say:'邊個詞語表示意思有轉折？',hint:'留意「雖然」後面配合嘅詞語。'},
+   {prompt:'哪個詞語表示仔細看？',choices:['觀察','忘記','增加'],answer:'觀察',say:'邊個詞語表示仔細睇？',hint:'科學活動經常會做。'},
+   {prompt:'短文的主要人物也叫甚麼？',choices:['主角','結果','段落'],answer:'主角',say:'短文嘅主要人物又叫乜嘢？',hint:'故事圍繞住佢發展。'}
+  ],
+  en:[
+   {prompt:'Jayden goes to school ___ bus.',choices:['by','on','at'],answer:'by',say:'請完成句子，Jayden goes to school blank bus。',english:'Jayden goes to school by bus.',hint:'乘搭交通工具用 by。'},
+   {prompt:'What is the past tense of go?',choices:['went','goes','going'],answer:'went',say:'Go 嘅過去式係乜嘢？',english:'What is the past tense of go?',hint:'答案開頭係 W。'},
+   {prompt:'Which word means「勇敢」?',choices:['brave','quiet','difficult'],answer:'brave',say:'邊個英文詞語解勇敢？',english:'brave',hint:'唔怕困難。'},
+   {prompt:'The book is ___ the table.',choices:['on','between','after'],answer:'on',say:'書本喺枱面，應該用邊個英文介詞？',english:'The book is on the table.',hint:'喺物件上面用 on。'},
+   {prompt:'Which sentence is correct?',choices:['She likes apples.','She like apples.','She liking apples.'],answer:'She likes apples.',say:'邊一句英文句子正確？',english:'She likes apples.',hint:'She 後面動詞要加 s。'},
+   {prompt:'「因為」的英文是甚麼？',choices:['because','although','before'],answer:'because',say:'因為嘅英文係乜嘢？',english:'because',hint:'開頭係 B。'}
+  ]
+ }
+};
+const dailySubjects={zh:{label:'中文',icon:'🀄',className:'chinese'},en:{label:'English',icon:'🔤',className:'english'},math:{label:'數學',icon:'➗',className:'math'}};
 const units=Object.entries(gradeCurriculum).map(([grade,g])=>({grade,name:`${g.label}字詞境`,icon:g.icon,words:g.words,color:grade==='p1'?'green':grade==='p2'?'orange':'purple'}));
 
 let state=load(ASSESS_KEY,{index:0,answers:[],started:false,finished:false});
 if(!Array.isArray(state.answers))state.answers=[];
-let learning=load(LEARN_KEY,{stars:0,known:{},mistakes:{},sessions:0,custom:[],dailyDates:[]});
+let learning=load(LEARN_KEY,{stars:0,known:{},mistakes:{},sessions:0,custom:[],dailyDates:[],dailyRecords:{},dailyInProgress:null});
 learning.known=learning.known||{};learning.mistakes=learning.mistakes||{};learning.custom=learning.custom||[];learning.dailyDates=learning.dailyDates||[];
+learning.dailyRecords=learning.dailyRecords&&typeof learning.dailyRecords==='object'?learning.dailyRecords:{};learning.dailyInProgress=learning.dailyInProgress||null;
 learning.grade=gradeCurriculum[learning.grade]?learning.grade:'p1';
 learning.xp=Math.max(0,Number(learning.xp)||0);learning.coins=Math.max(0,Number(learning.coins)||0);learning.arcade=learning.arcade||{plays:0,catchBest:0,memoryBest:0,orderBest:0};learning.inventory=learning.inventory||{};learning.upgrades=learning.upgrades||{boots:0,lens:0,charm:0};learning.cosmetics=learning.cosmetics||{owned:['leaf'],trail:'leaf'};learning.campClaims=learning.campClaims||{};
-let route='home',chosen=null,practice=null,recognition=null,recognizedText='',speechRuleIndexOverride=null,handwritingIndex=0,dictationSession=null,dictationMode='listen',arcadeSession=null,speechRewarded=false,progressSaving=false,lastSavedStars=learning.stars||0;
+let route='home',chosen=null,practice=null,dailySession=null,recognition=null,recognizedText='',speechRuleIndexOverride=null,handwritingIndex=0,dictationSession=null,dictationMode='listen',arcadeSession=null,speechRewarded=false,progressSaving=false,lastSavedStars=learning.stars||0;
 const saveState=()=>persist(ASSESS_KEY,state),saveLearning=()=>{const gained=(learning.stars||0)-lastSavedStars;if(gained>0&&!progressSaving){learning.xp+=gained*5;learning.coins+=gained}lastSavedStars=learning.stars||0;persist(LEARN_KEY,learning);updateProgressHud()};
 const levelFor=xp=>Math.floor(Math.max(0,xp)/100)+1;
 const rankFor=level=>['嫩芽學徒','森林行者','字靈伙伴','符文守護者','中文探險家'][Math.min(4,Math.floor((level-1)/3))];
@@ -62,6 +120,50 @@ function confetti(){const box=document.getElementById('celebration');box.innerHT
 function feedback(text,good=true){const el=document.createElement('div');el.className='feedback';el.textContent=(good?'🌟 ':'💡 ')+text;document.body.appendChild(el);if(good)confetti();setTimeout(()=>el.remove(),1100)}
 function scrollTop(){window.scrollTo({top:0,behavior:'smooth'})}
 function today(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date())}
+function dailySeed(value){return [...String(value)].reduce((n,c)=>(n*33+c.charCodeAt(0))>>>0,5381)}
+function dailyTake(list,seed,count=3){return Array.from({length:Math.min(count,list.length)},(_,i)=>list[(seed+i*5)%list.length]).map(q=>({...q,choices:[...q.choices]}))}
+function numberChoices(answer,step=1){return [...new Set([answer,Math.max(0,answer-step),answer+step,answer+step*2])].slice(0,3).map(String)}
+function dailyMathQuestions(grade,seed){
+ const n=seed%11;
+ if(grade==='p1'){
+  const a=4+n%6,b=2+(n*3)%6,sum=a+b,big=11+n%8,take=2+(n%5),next=2+(n%6)*2;
+  return [
+   {prompt:`${a} + ${b} = ?`,choices:numberChoices(sum),answer:String(sum),say:`${a} 加 ${b} 等於幾多？`,hint:'可以由較大嘅數開始向前數。'},
+   {prompt:`${big} − ${take} = ?`,choices:numberChoices(big-take),answer:String(big-take),say:`${big} 減 ${take} 等於幾多？`,hint:'用手指逐個數走。'},
+   {prompt:`${next}、${next+2}、?、${next+6}`,choices:[String(next+4),String(next+3),String(next+5)],answer:String(next+4),say:'請搵出數列中間欠咗嘅數字。',hint:'每次加二。'}
+  ];
+ }
+ if(grade==='p2'){
+  const a=23+n*3,b=12+(n*2)%17,sum=a+b,m=2+n%8,times=[2,5,10][n%3],coins=50+n*5,cost=12+n;
+  return [
+   {prompt:`${a} + ${b} = ?`,choices:numberChoices(sum,10),answer:String(sum),say:`${a} 加 ${b} 等於幾多？`,hint:'先加十位，再加個位。'},
+   {prompt:`${times} × ${m} = ?`,choices:numberChoices(times*m,times),answer:String(times*m),say:`${times} 乘 ${m} 等於幾多？`,hint:`由 ${times} 開始跳住數。`},
+   {prompt:`Jayden 有 $${coins}，買文具用了 $${cost}，還有多少？`,choices:numberChoices(coins-cost,5),answer:String(coins-cost),say:`Jayden 有 ${coins} 蚊，用咗 ${cost} 蚊，仲有幾多蚊？`,hint:'「還有」通常要用減法。'}
+  ];
+ }
+ const a=126+n*13,b=78+n*7,total=a+b,divisor=2+n%5,quotient=4+n%7,mul=divisor*quotient,whole=24+(n%5)*6,part=whole/3;
+ return [
+  {prompt:`${a} + ${b} = ?`,choices:numberChoices(total,10),answer:String(total),say:`${a} 加 ${b} 等於幾多？`,hint:'對齊個位、十位同百位。'},
+  {prompt:`${mul} ÷ ${divisor} = ?`,choices:numberChoices(quotient),answer:String(quotient),say:`${mul} 除以 ${divisor} 等於幾多？`,hint:'諗返邊個數乘除數會得到被除數。'},
+  {prompt:`${whole} 的三分之一是多少？`,choices:[String(part),String(part*2),String(whole-1)],answer:String(part),say:`${whole} 嘅三分之一係幾多？`,hint:'將總數平均分成三份。'}
+ ];
+}
+function makeDailyQuestions(date=today(),grade=learning.grade){
+ const seed=dailySeed(`${date}-${grade}`),bank=dailyBanks[grade]||dailyBanks.p1;
+ const prepare=(questions,subject,offset)=>questions.map((q,i)=>{const shift=(seed+offset+i)%q.choices.length,choices=[...q.choices.slice(shift),...q.choices.slice(0,shift)];return{...q,choices,id:`${subject}-${i}`,subject}});
+ return [
+  ...prepare(dailyTake(bank.zh,seed,3),'zh',1),
+  ...prepare(dailyTake(bank.en,seed+2,3),'en',3),
+  ...prepare(dailyMathQuestions(grade,seed+4),'math',5)
+ ];
+}
+function recentDailyRecords(limit=7){return Object.entries(learning.dailyRecords).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,limit)}
+function dailyStreak(){
+ const dates=new Set(Object.keys(learning.dailyRecords).filter(d=>learning.dailyRecords[d]?.complete));let cursor=new Date(`${today()}T00:00:00+08:00`),count=0;
+ if(!dates.has(today()))cursor.setDate(cursor.getDate()-1);
+ while(count<366){const key=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(cursor);if(!dates.has(key))break;count++;cursor.setDate(cursor.getDate()-1)}
+ return count;
+}
 function gradePicker(){return `<div class="grade-picker" role="group" aria-label="選擇程度">${Object.entries(gradeCurriculum).map(([key,g])=>`<button data-grade="${key}" class="${learning.grade===key?'selected':''}">${g.icon} ${g.label}</button>`).join('')}</div><p class="curriculum-note">依據教育局《香港小學學習字詞表》第一學習階段範圍；小一至小三為本 App 循序編排，並非教育局逐級指定。</p>`}
 function bindGradePicker(rerender){root.querySelectorAll('[data-grade]').forEach(b=>b.onclick=()=>{learning.grade=b.dataset.grade;saveLearning();rerender()})}
 function speak(text){
@@ -70,6 +172,11 @@ function speak(text){
  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='zh-HK';u.rate=.82;u.pitch=1.05;
  const voices=speechSynthesis.getVoices();u.voice=voices.find(v=>v.lang.toLowerCase()==='zh-hk')||voices.find(v=>/cantonese|hong kong|粵語/i.test(v.name))||null;
  speechSynthesis.speak(u);if(!u.voice)toast('裝置未有廣東話語音，讀音可能唔準確。');
+}
+function speakEnglish(text){
+ if(!('speechSynthesis'in window)){toast('呢個瀏覽器未能播放英文讀音。');return}
+ speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-GB';u.rate=.78;
+ const voices=speechSynthesis.getVoices();u.voice=voices.find(v=>v.lang.toLowerCase()==='en-gb')||voices.find(v=>v.lang.toLowerCase().startsWith('en'))||null;speechSynthesis.speak(u);
 }
 function enterLearningScene(kind,title){
  document.body.classList.add('realm-learning');document.body.dataset.learning=kind;
@@ -83,15 +190,15 @@ dock.querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.route));
 
 function renderHome(){
  if(window.ZiziGame)return window.ZiziGame.mount();
- updateChrome('home');const remaining=Math.max(0,50-state.answers.length),dailyDone=learning.dailyDates.includes(today());
+ updateChrome('home');const remaining=Math.max(0,50-state.answers.length),dailyRecord=learning.dailyRecords[today()],dailyDone=Boolean(dailyRecord?.complete),dailyScore=dailyRecord?.best?.total||0;
  root.innerHTML=`
  <section class="hero">
   <div><span class="hero-badge">今日探險任務</span><h1>你好，文字探險家！</h1><p>同阿字一齊穿過森林、解開詞語謎題，逐步儲齊中文超能力。</p>
-  <div class="actions"><button class="btn mint" id="heroDaily">${dailyDone?'再玩每日任務':'出發做每日任務'}</button><button class="btn ghost" id="heroMap">打開冒險地圖</button></div></div>
+  <div class="actions"><button class="btn mint" id="heroDaily">${dailyDone?'查看／再做今日練習':'開始 Jayden 每日練習'}</button><button class="btn ghost" id="heroMap">打開冒險地圖</button></div></div>
   <div class="hero-character" aria-label="探險狐狸阿字正在揮手"><span class="hero-spark">✨</span><span class="fox-emoji">🦊</span><span class="character-callout">一齊出發！</span></div>
  </section>
- <div class="section-head"><h2>今日任務</h2><span class="muted tiny">${dailyDone?'已完成，叻叻！':'約 5 分鐘'}</span></div>
- <div class="quest-strip"><div class="qicon">${dailyDone?'🏅':'🎯'}</div><div><b>${dailyDone?'今日寶箱已打開':'完成 5 個認字挑戰'}</b><div class="muted tiny">${dailyDone?'明日再有新任務，亦可以繼續練習。':'完成可獲星星，錯題會自動加入複習。'}</div></div><button class="btn ${dailyDone?'secondary':'mint'}" id="dailyBtn">${dailyDone?'再玩':'開始'}</button></div>
+ <div class="section-head"><h2>Jayden 今日練習</h2><span class="muted tiny">${dailyDone?`已完成 · ${dailyScore}/9 分`:'約 8–10 分鐘'}</span></div>
+ <div class="quest-strip"><div class="qicon">${dailyDone?'🏅':'🎯'}</div><div><b>${dailyDone?'中、英、數今日已完成':'中文、English、數學各 3 題'}</b><div class="muted tiny">${dailyDone?`最佳 ${dailyScore}/9 分 · 連續 ${dailyStreak()} 日`:'逐科記分，中途離開亦可以繼續。'}</div></div><button class="btn ${dailyDone?'secondary':'mint'}" id="dailyBtn">${dailyDone?'查看':'開始'}</button></div>
  <div class="section-head"><h2>選擇冒險</h2></div>
  <div class="mission-grid">
   <button class="mission purple" id="assess"><span class="mission-icon">🏆</span><b>50 題能力大冒險</b><small>${state.finished?'已完成，可查看報告':state.answers.length?`已完成 ${state.answers.length} 題，尚餘 ${remaining} 題`:'保留原有 50 題評估與進度'}</small></button>
@@ -188,9 +295,36 @@ function dailyWords(){
  return Array.from({length:5},(_,i)=>all[(seed+i*29)%all.length]);
 }
 function renderDaily(){
- updateChrome('每日任務');const done=learning.dailyDates.includes(today());
- root.innerHTML=`<section class="card question-card"><div class="hero" style="grid-template-columns:1fr auto"><div><span class="hero-badge">${done?'今日已完成':'連續小任務'}</span><h1>${gradeCurriculum[learning.grade].label}每日 5 分鐘</h1><p>今日會練 5 個香港初小字詞：聽清楚、認出佢、再記住佢。</p></div><div class="mascot" style="font-size:90px;min-height:130px">🎒</div></div>${gradePicker()}<h2 style="margin-top:24px">今日詞語</h2><div class="word-cloud">${dailyWords().map(x=>`<span>${x}</span>`).join('')}</div><div class="actions"><button class="btn mint" id="beginDaily">${done?'再挑戰一次':'開始今日任務'}</button><button class="btn secondary" id="hearDaily">🔊 聽詞語</button></div></section>`;
- enterLearningScene('daily','每日伙伴任務');bindGradePicker(renderDaily);document.getElementById('beginDaily').onclick=()=>startPractice(units.findIndex(u=>u.grade===learning.grade),5,true);document.getElementById('hearDaily').onclick=()=>speak(dailyWords().join('，'));
+ updateChrome('Jayden 每日練習');const record=learning.dailyRecords[today()],inProgress=learning.dailyInProgress?.date===today()?learning.dailyInProgress:null,best=record?.best||{total:0,subjects:{}},history=recentDailyRecords();
+ const subjectCards=Object.entries(dailySubjects).map(([key,meta])=>`<article class="daily-subject ${meta.className} ${record?.complete?'done':''}"><span>${meta.icon}</span><div><b>${meta.label}</b><small>${record?.complete?`最佳 ${best.subjects?.[key]||0} / 3`:'今日 3 題'}</small></div><strong>${record?.complete?'✓':'○'}</strong></article>`).join('');
+ root.innerHTML=`<section class="card daily-hub"><div class="daily-hero"><div><span class="hero-badge">${record?.complete?'今日已完成':'每日學習紀錄'}</span><h1>Jayden 今日中英數練習</h1><p>每日中文、English、數學各 3 題；做完會保存每科分數同總分。</p></div><div class="daily-streak"><b>${dailyStreak()}</b><span>🔥 連續日數</span></div></div>${gradePicker()}<div class="daily-subjects">${subjectCards}</div><div class="daily-total"><div><small>${record?.complete?'今日最佳總分':'今日進度'}</small><b>${record?.complete?`${best.total} / 9`:inProgress?`${inProgress.index} / 9`:'未開始'}</b></div><div class="progress"><span style="width:${record?.complete?best.total/9*100:inProgress?inProgress.index/9*100:0}%"></span></div></div><div class="actions"><button class="btn mint" id="beginDaily">${inProgress?'繼續未完成練習':record?.complete?'再做一次':'開始今日 9 題'}</button><button class="btn secondary" id="dailyHome">返回森境</button></div>${history.length?`<h2 class="daily-history-title">最近完成紀錄</h2>${dailyHistoryMarkup(history)}`:''}</section>`;
+ enterLearningScene('daily','Jayden 每日中英數');bindGradePicker(renderDaily);document.getElementById('beginDaily').onclick=()=>startDailyPractice(Boolean(record?.complete&&!inProgress));document.getElementById('dailyHome').onclick=()=>go('home');
+}
+
+function dailyHistoryMarkup(records=recentDailyRecords()){
+ return `<div class="daily-history" role="table" aria-label="每日練習紀錄"><div class="daily-history-row head" role="row"><span>日期</span><span>中</span><span>英</span><span>數</span><span>總分</span></div>${records.map(([date,r])=>`<div class="daily-history-row" role="row"><span>${date.slice(5).replace('-','/')}</span><span>${r.best?.subjects?.zh||0}/3</span><span>${r.best?.subjects?.en||0}/3</span><span>${r.best?.subjects?.math||0}/3</span><b>${r.best?.total||0}/9</b></div>`).join('')}</div>`;
+}
+function startDailyPractice(forceNew=false){
+ const saved=learning.dailyInProgress;
+ if(!forceNew&&saved?.date===today()&&saved.questions?.length===9){dailySession=saved}else dailySession={date:today(),grade:learning.grade,questions:makeDailyQuestions(),index:0,scores:{zh:0,en:0,math:0},results:[]};
+ learning.dailyInProgress=dailySession;saveLearning();route='practice';updateChrome('Jayden 每日練習');renderDailyRound();
+}
+function renderDailyRound(){
+ if(!dailySession||dailySession.index>=dailySession.questions.length){finishDailyPractice();return}
+ const q=dailySession.questions[dailySession.index],meta=dailySubjects[q.subject],subjectNumber=dailySession.questions.slice(0,dailySession.index+1).filter(x=>x.subject===q.subject).length;
+ root.innerHTML=`<section class="card question-card daily-round daily-${meta.className}"><div class="question-top"><span class="route-label">${meta.icon} ${meta.label}</span><b>第 ${dailySession.index+1} / 9 題</b></div><div class="progress"><span style="width:${dailySession.index/9*100}%"></span></div><div class="daily-round-track">${Object.entries(dailySubjects).map(([key,m])=>`<span class="${key===q.subject?'active':dailySession.questions.slice(0,dailySession.index).filter(x=>x.subject===key).length===3?'done':''}">${m.icon}<small>${dailySession.scores[key]}/3</small></span>`).join('')}</div><div class="daily-question-number">${meta.label} ${subjectNumber} / 3</div><h1 class="prompt">${esc(q.prompt)}</h1><div class="daily-audio"><button class="btn secondary speaker" id="hearDailyQuestion">🔊 聽題目</button>${q.english?`<button class="btn ghost speaker" id="hearEnglish">🇬🇧 聽英文</button>`:''}</div><div class="answer-grid">${q.choices.map((choice,i)=>`<button class="choice" data-daily-answer="${i}">${esc(choice)}</button>`).join('')}</div><p class="tip hidden" id="dailyHint" aria-live="polite"></p><div class="actions"><button class="btn ghost" id="leaveDaily">儲存並離開</button></div></section>`;
+ enterLearningScene('daily','中英數挑戰場');document.getElementById('hearDailyQuestion').onclick=()=>speak(q.say||q.prompt);if(q.english)document.getElementById('hearEnglish').onclick=()=>speakEnglish(q.english);document.getElementById('leaveDaily').onclick=()=>{learning.dailyInProgress=dailySession;saveLearning();go('daily')};
+ root.querySelectorAll('[data-daily-answer]').forEach(button=>button.onclick=()=>answerDailyQuestion(button,q));setTimeout(()=>speak(q.say||q.prompt),260);
+}
+function answerDailyQuestion(button,q){
+ const choice=q.choices[Number(button.dataset.dailyAnswer)],right=choice===q.answer;root.querySelectorAll('[data-daily-answer]').forEach((b,i)=>{b.disabled=true;b.classList.toggle('correct',q.choices[i]===q.answer);b.classList.toggle('wrong',b===button&&!right)});
+ if(right)dailySession.scores[q.subject]++;dailySession.results.push({id:q.id,subject:q.subject,right,answer:choice});dailySession.index++;learning.dailyInProgress=dailySession;saveLearning();const hint=document.getElementById('dailyHint');hint.textContent=right?'答啱！下一題準備出發。':`答案係「${q.answer}」。${q.hint||'下次再試就會識。'}`;hint.classList.remove('hidden');feedback(right?'答啱，Jayden 加一分！':'唔緊要，睇清提示再記住。',right);setTimeout(()=>{if(route==='practice'&&dailySession)renderDailyRound()},1200);
+}
+function finishDailyPractice(){
+ if(!dailySession){go('daily');return}const date=dailySession.date,previous=learning.dailyRecords[date],firstCompletion=!previous?.complete,total=Object.values(dailySession.scores).reduce((sum,n)=>sum+n,0),previousBest=previous?.best||{total:0,subjects:{}};
+ const bestSubjects=Object.fromEntries(Object.keys(dailySubjects).map(key=>[key,Math.max(previousBest.subjects?.[key]||0,dailySession.scores[key]||0)]));learning.dailyRecords[date]={date,grade:dailySession.grade,complete:true,attempts:(previous?.attempts||0)+1,completedAt:new Date().toISOString(),latest:{total,subjects:{...dailySession.scores}},best:{total:Math.max(previousBest.total||0,total),subjects:bestSubjects}};
+ learning.dailyRecords=Object.fromEntries(Object.entries(learning.dailyRecords).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,120));learning.dailyInProgress=null;if(!learning.dailyDates.includes(date))learning.dailyDates=[...learning.dailyDates,date].slice(-120);saveLearning();if(firstCompletion)awardProgress('完成今日中英數練習',30,9,3);dailySession=null;updateChrome('今日練習完成');confetti();
+ const record=learning.dailyRecords[date];root.innerHTML=`<section class="card question-card daily-finish"><div class="daily-finish-badge">🏅</div><h1>Jayden 今日練習完成！</h1><p class="prompt">今次 ${total} / 9 分</p><div class="daily-subjects">${Object.entries(dailySubjects).map(([key,meta])=>`<article class="daily-subject ${meta.className} done"><span>${meta.icon}</span><div><b>${meta.label}</b><small>今次 ${record.latest.subjects[key]} / 3 · 最佳 ${record.best.subjects[key]} / 3</small></div><strong>${record.latest.subjects[key]===3?'★':'✓'}</strong></article>`).join('')}</div><p class="info">今日最佳總分：<b>${record.best.total} / 9</b>　·　🔥 連續完成 ${dailyStreak()} 日</p><div class="actions" style="justify-content:center"><button class="btn mint" id="dailyAgain">再做一次</button><button class="btn secondary" id="dailyReport">查看紀錄</button><button class="btn ghost" id="dailyFinishHome">返回森境</button></div></section>`;enterLearningScene('daily','今日完成');document.getElementById('dailyAgain').onclick=()=>startDailyPractice(true);document.getElementById('dailyReport').onclick=()=>go('daily');document.getElementById('dailyFinishHome').onclick=()=>go('home');
 }
 
 function startPractice(unitIndex=0,total=5,isDaily=false){
@@ -318,8 +452,8 @@ function resetAssessment(){if(!confirm('確定清除 50 題評估答案並重新
 function downloadBlob(name,content,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1200)}
 
 function renderParent(){
- updateChrome('家長中心');const missed=Object.entries(learning.mistakes).sort((a,b)=>b[1]-a[1]).slice(0,12);
- root.innerHTML=`<section class="card"><span class="route-label">👨‍👩‍👦 家長中心</span><h1 style="margin:14px 0 5px">學習概況</h1><p class="muted">所有資料只保存在呢部裝置，唔會上傳小朋友錄音。</p><div class="report-grid"><div class="report-item"><b>⭐ ${learning.stars}</b><div class="muted tiny">累積星星</div></div><div class="report-item"><b>📚 ${Object.keys(learning.known).length}</b><div class="muted tiny">練過嘅詞語</div></div><div class="report-item"><b>🎮 ${learning.sessions}</b><div class="muted tiny">遊戲局數</div></div><div class="report-item"><b>🎯 ${learning.dailyDates.length}</b><div class="muted tiny">完成每日任務日數</div></div></div><h2 style="margin-top:26px">需要再見面嘅詞語</h2><div class="word-cloud">${missed.length?missed.map(([w,n])=>`<span>${esc(w)} · ${n}</span>`).join(''):'<span>暫時未有錯題</span>'}</div><h2 style="margin-top:26px">加入學校詞語</h2><textarea id="customWords" placeholder="每行一個詞語，例如：&#10;郊遊&#10;圖書館"></textarea><div class="actions"><button class="btn" id="addWords">加入詞庫</button><button class="btn secondary" id="backup">備份全部進度</button><button class="btn secondary" id="importBackup">還原備份</button><input type="file" id="backupFile" accept="application/json" class="hidden"></div><h2 style="margin-top:28px">關於說話屋</h2><p class="info">iPhone 上的 Web Speech API 可用性會因 iOS 版本、Safari 設定及網絡而異，對兒童廣東話亦可能聽錯。本 App 只用辨認文字做關鍵詞提示，唔會聲稱可靠評估聲調或咬字。若日後需要真正發音評估，應另設經驗證的後端語音模型、取得家長同意，並制定錄音保留與私隱安排。</p></section>`;
+ updateChrome('家長中心');const missed=Object.entries(learning.mistakes).sort((a,b)=>b[1]-a[1]).slice(0,12),dailyHistory=recentDailyRecords(14);
+ root.innerHTML=`<section class="card"><span class="route-label">👨‍👩‍👦 家長中心</span><h1 style="margin:14px 0 5px">學習概況</h1><p class="muted">所有資料只保存在呢部裝置，唔會上傳小朋友錄音。</p><div class="report-grid"><div class="report-item"><b>⭐ ${learning.stars}</b><div class="muted tiny">累積星星</div></div><div class="report-item"><b>📚 ${Object.keys(learning.known).length}</b><div class="muted tiny">練過嘅詞語</div></div><div class="report-item"><b>🎮 ${learning.sessions}</b><div class="muted tiny">遊戲局數</div></div><div class="report-item"><b>🔥 ${dailyStreak()}</b><div class="muted tiny">連續完成日數</div></div></div><h2 style="margin-top:26px">Jayden 每日中英數紀錄</h2>${dailyHistory.length?dailyHistoryMarkup(dailyHistory):'<p class="tip">完成第一份每日練習後，呢度會顯示中文、English、數學同總分。</p>'}<h2 style="margin-top:26px">需要再見面嘅詞語</h2><div class="word-cloud">${missed.length?missed.map(([w,n])=>`<span>${esc(w)} · ${n}</span>`).join(''):'<span>暫時未有錯題</span>'}</div><h2 style="margin-top:26px">加入學校詞語</h2><textarea id="customWords" placeholder="每行一個詞語，例如：&#10;郊遊&#10;圖書館"></textarea><div class="actions"><button class="btn" id="addWords">加入詞庫</button><button class="btn secondary" id="backup">備份全部進度</button><button class="btn secondary" id="importBackup">還原備份</button><input type="file" id="backupFile" accept="application/json" class="hidden"></div><h2 style="margin-top:28px">關於說話屋</h2><p class="info">iPhone 上的 Web Speech API 可用性會因 iOS 版本、Safari 設定及網絡而異，對兒童廣東話亦可能聽錯。本 App 只用辨認文字做關鍵詞提示，唔會聲稱可靠評估聲調或咬字。若日後需要真正發音評估，應另設經驗證的後端語音模型、取得家長同意，並制定錄音保留與私隱安排。</p></section>`;
  document.getElementById('addWords').onclick=()=>{const words=document.getElementById('customWords').value.split(/[,，\n]/).map(x=>x.trim()).filter(x=>x&&x.length<=12);learning.custom=[...new Set([...learning.custom,...words])].slice(0,100);saveLearning();toast(`已加入 ${words.length} 個詞語`)};
  document.getElementById('backup').onclick=()=>downloadBlob('zizi-backup.json',JSON.stringify({version:2,assessment:state,learning,date:new Date().toISOString()},null,2),'application/json');
  document.getElementById('importBackup').onclick=()=>document.getElementById('backupFile').click();document.getElementById('backupFile').onchange=importBackup;
